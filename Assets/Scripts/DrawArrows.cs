@@ -21,8 +21,6 @@ public class DrawArrows : MonoBehaviour
     {
         GameObject bottomOfSphere = GameObject.Find("BottomOfSphere");
         mechanicsScript = bottomOfSphere.GetComponent<Mechanics>();
-        Debug.Log(mechanicsScript.velocity);
-        Debug.Log(Ball);
     }
 
     void drawSingleArrow(Vector3 vector, UnityEngine.Color color)
