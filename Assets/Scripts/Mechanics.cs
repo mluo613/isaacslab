@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Mechanics : MonoBehaviour {
-	private Vector3 velocity = new Vector3 (0, 0, 0);
+	public Vector3 velocity = new Vector3 (0, 0, 0);
 
 	public bool enableMotion = false;
 
@@ -26,7 +26,6 @@ public class Mechanics : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Debug.Log (this.transform.position.y);
 
 
 		if (Input.GetKeyDown("space"))
