@@ -5,7 +5,8 @@ public class Mechanics : MonoBehaviour {
 	public Vector3 velocity = new Vector3 (0, 0, 0);
 
 	public bool enableMotion = false;
-
+    public Vector3 gravity = new Vector3(0, -9.8f, 0);
+    public Vector3 handForce = new Vector3(0, 0, 0);
 
 	// Use this for initialization
 	void Start () {

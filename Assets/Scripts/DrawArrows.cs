@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-public class DrawArrows : MonoBehaviour {
+public class DrawArrows : MonoBehaviour
+{
 
     private float xTest = 0.0f;
     private float yTest = 0.0f;
@@ -11,18 +12,20 @@ public class DrawArrows : MonoBehaviour {
     public GameObject Ball;
     private Mechanics mechanicsScript;
 
-    private bool areArrowsVisible = false;
+    private bool areVelocityArrowsVisible = false;
+    private bool areAccelerationArrowsVisible = false;
     public List<GameObject> arrows = new List<GameObject>();
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         GameObject bottomOfSphere = GameObject.Find("BottomOfSphere");
         mechanicsScript = bottomOfSphere.GetComponent<Mechanics>();
         Debug.Log(mechanicsScript.velocity);
         Debug.Log(Ball);
     }
-	
-    void drawSingleArrow(Vector3 objectPosition, Vector3 vector)
+
+    void drawSingleArrow(Vector3 vector, UnityEngine.Color color)
     {
         GameObject arrow = Instantiate(Resources.Load("ArrowCont")) as GameObject;
         //arrow.gameObject.transform.position = new Vector3(xTest, 0, 0); // todo replace with object position
@@ -36,91 +39,106 @@ public class DrawArrows : MonoBehaviour {
         MeshRenderer[] meshArray = arrow.gameObject.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer mesh in meshArray)
         {
-            mesh.material.color = new UnityEngine.Color(0, 0, 250);
+            mesh.material.color = color;
         }
-        //arrow.gameObject.GetComponent<MeshRenderer>().material.color = new UnityEngine.Color(0, 0, 0);
-        //arrow.gameObject.GetComponentInChildren<Transform>().Find("Cylinder").localScale = new Vector3(1,2,1);
-        arrow.gameObject.transform.localScale = new Vector3(velocityMag*.2f, 1*.2f, 1*.2f);
-        // TODO - need to adjust base of cylinder
-        Debug.Log(rotationAngleDegrees);
+
+        arrow.gameObject.transform.localScale = new Vector3(velocityMag * .2f, 1 * .2f, 1 * .2f);
         arrows.Add(arrow);
     }
 
-    void toggleArrows(Vector3 objectPosition, List<Vector3> velocities, List<Vector3> accelerations)
+    void toggleArrows(List<Vector3> vectors, UnityEngine.Color color)
     {
-        if (areArrowsVisible == false)
+        // if arrows are not there, draw them!
+        for (int ii = 0; ii < vectors.Count; ++ii)
         {
-            areArrowsVisible = true;
-            // if arrows are not there, draw them!
-            for (int ii = 0; ii < velocities.Count; ++ii)
+            Vector3 vector = vectors[ii];
+            Debug.Log(vector);
+            // draw x and y arrows
+            if (vector.x != 0)
             {
-                Vector3 velocity = velocities[ii];
-                Debug.Log(velocity);
-                // draw x and y arrows
-                if (velocity.x != 0)
-                {
-                    Vector3 velx = new Vector3(velocity.x, 0, 0);
-                    drawSingleArrow(objectPosition, velx);
-
-                }
-
-                if (velocity.y != 0)
-                {
-                    Vector3 vely = new Vector3(0, velocity.y, 0);
-                    drawSingleArrow(objectPosition, vely);
-
-                }
-
-                // draw resultant arrow
-                if (velocity.x != 0 && velocity.y != 0)
-                {
-                    drawSingleArrow(objectPosition, velocity);
-                }
-                
-            }
-            for (int ii = 0; ii < accelerations.Count; ++ii)
-            {
-                yTest += 1f;
-                GameObject arrow2 = Instantiate(Resources.Load("Arrow")) as GameObject;
-                arrow2.gameObject.transform.position = new Vector3(yTest,0,0);
-                arrows.Add(arrow2);
+                Vector3 vecx = new Vector3(vector.x, 0, 0);
+                drawSingleArrow(vecx, color);
             }
 
-
-        }
-        else
-        {
-            areArrowsVisible = false;
-            // loop through all arrows and make them invisible
-            for(int ii=0; ii<arrows.Count; ++ii)
+            if (vector.y != 0)
             {
-                Debug.Log("hiding arrow");
-                GameObject.Destroy(arrows[ii]);
+                Vector3 vecy = new Vector3(0, vector.y, 0);
+                drawSingleArrow(vecy, color);
             }
-            arrows.Clear();
+
+            // draw resultant arrow
+            if (vector.x != 0 && vector.y != 0)
+            {
+                drawSingleArrow(vector, color);
+            }
+
         }
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         Debug.Log(mechanicsScript.velocity);
 
-        if (Input.GetKeyDown("d"))
-        {
-            Vector3 objectPosition = new Vector3(0, 0, 0);
-            List<Vector3> velocities = new List<Vector3>();
-            velocities.Add(mechanicsScript.velocity);
-            List<Vector3> accelerations = new List<Vector3>(); ;
-            //accelerations.Add(new Vector3(0, 0, 0));
-            toggleArrows(objectPosition, velocities, accelerations);
-        }
-
-        // show arrows
+        // todo -translate arrows if this is too slow
+        // constantly redrawing the arrows per frame!
+        // loop through all arrows and make them invisible
         for (int ii = 0; ii < arrows.Count; ++ii)
         {
-            //xTest += 1f;
-            //arrows[ii].gameObject.transform.position = new Vector3(xTest,0,0);
+            Debug.Log("hiding arrow");
+            GameObject.Destroy(arrows[ii]);
+        }
+        arrows.Clear();
+
+        if (Input.GetKeyDown("v"))
+        {
+            if(areAccelerationArrowsVisible)
+            {
+                areAccelerationArrowsVisible = false;
+            }
+
+            if (areVelocityArrowsVisible == true)
+            {
+                areVelocityArrowsVisible = false;
+            }
+            else
+            {
+                areVelocityArrowsVisible = true;
+            }
+        }
+
+        if (Input.GetKeyDown("a"))
+        {
+            if(areVelocityArrowsVisible)
+            {
+                areVelocityArrowsVisible = false;
+            }
+            if (areAccelerationArrowsVisible == true)
+            {
+                areAccelerationArrowsVisible = false;
+            }
+            else
+            {
+                areAccelerationArrowsVisible = true;
+            }
+        }
+
+
+        if (areVelocityArrowsVisible)
+        {
+            List<Vector3> velocities = new List<Vector3>();
+            velocities.Add(mechanicsScript.velocity);
+            toggleArrows(velocities, new UnityEngine.Color(0, 0, 250));
+        }
+
+        if (areAccelerationArrowsVisible)
+        {
+            List<Vector3> accelerations = new List<Vector3>();
+            accelerations.Add(mechanicsScript.gravity);
+            accelerations.Add(mechanicsScript.handForce);
+            toggleArrows(accelerations, new UnityEngine.Color(250, 0, 0));
         }
 
     }
 }
+
