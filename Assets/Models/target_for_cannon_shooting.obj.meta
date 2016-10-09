@@ -10,23 +10,48 @@ ModelImporter:
     100004: scene_4_1to1__target_2
     100006: scene_4_1to1__target_3
     100008: //RootNode
+    100010: scene_cannon_shooting__arrow_cone
+    100012: scene_cannon_shooting__arrow_cyl
+    100014: scene_cannon_shooting__table
+    100016: scene_cannon_shooting__tablet_base
+    100018: scene_cannon_shooting__tablet_screen
     400000: projectile
     400002: scene_4_1to1__target_1
     400004: scene_4_1to1__target_2
     400006: scene_4_1to1__target_3
     400008: //RootNode
+    400010: scene_cannon_shooting__arrow_cone
+    400012: scene_cannon_shooting__arrow_cyl
+    400014: scene_cannon_shooting__table
+    400016: scene_cannon_shooting__tablet_base
+    400018: scene_cannon_shooting__tablet_screen
     2300000: projectile
     2300002: scene_4_1to1__target_1
     2300004: scene_4_1to1__target_2
     2300006: scene_4_1to1__target_3
+    2300008: scene_cannon_shooting__arrow_cone
+    2300010: scene_cannon_shooting__arrow_cyl
+    2300012: scene_cannon_shooting__table
+    2300014: scene_cannon_shooting__tablet_base
+    2300016: scene_cannon_shooting__tablet_screen
     3300000: projectile
     3300002: scene_4_1to1__target_1
     3300004: scene_4_1to1__target_2
     3300006: scene_4_1to1__target_3
+    3300008: scene_cannon_shooting__arrow_cone
+    3300010: scene_cannon_shooting__arrow_cyl
+    3300012: scene_cannon_shooting__table
+    3300014: scene_cannon_shooting__tablet_base
+    3300016: scene_cannon_shooting__tablet_screen
     4300000: projectile
     4300002: scene_4_1to1__target_1
     4300004: scene_4_1to1__target_2
     4300006: scene_4_1to1__target_3
+    4300008: scene_cannon_shooting__arrow_cone
+    4300010: scene_cannon_shooting__arrow_cyl
+    4300012: scene_cannon_shooting__table
+    4300014: scene_cannon_shooting__tablet_base
+    4300016: scene_cannon_shooting__tablet_screen
   materials:
     importMaterials: 1
     materialName: 0
