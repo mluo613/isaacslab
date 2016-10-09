@@ -19,7 +19,7 @@ public class TextOverlay : MonoBehaviour {
 			GetComponentInChildren<TextMesh> ().text = "Height:" + (Mathf.Round (this.transform.parent.parent.localPosition.y * 10) / 10f).ToString ();
 		}
 		else if (this.name == "PowerMeter") {
-			GetComponentInChildren<TextMesh> ().text = "Velocity: " + (Mathf.Round (this.transform.parent.localPosition.y * 500) / 10f).ToString () + " m/s";
+			GetComponentInChildren<TextMesh> ().text = "Velocity: " + (Mathf.Round (this.transform.parent.localPosition.y * 5000) / 100f).ToString () + " m/s";
 		}
 	}
 }
