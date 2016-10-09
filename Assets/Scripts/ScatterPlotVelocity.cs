@@ -30,7 +30,7 @@ public class ScatterPlotVelocity : MonoBehaviour {
         timeElapsed = 0;
         positionPoints.Add(0, new Vector3(0, this.transform.localPosition.y, 0));
 
-        positionAxisFactor = 20/400f;
+        positionAxisFactor = 20/120f;
         velocityPoints.Add(0, Vector3.zero);
     }
 

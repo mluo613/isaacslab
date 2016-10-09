@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CannonGrabber : MonoBehaviour
 {
@@ -86,7 +87,10 @@ public class CannonGrabber : MonoBehaviour
 				foreach (GameObject overlay in Globals.solutions) {
 					overlay.SetActive (false);
 				}
-				foreach (GameObject overlay in Globals.overlays) {
+
+				Globals.solutions = new List<GameObject>();
+				foreach (GameObject overlay in GameObject.FindGameObjectsWithTag("Solution")) {
+					Globals.solutions.Add (overlay);
 					overlay.SetActive (false);
 				}
 			}
