@@ -16,7 +16,7 @@ public class SceneChanger : MonoBehaviour {
 			SceneManager.LoadScene ("balldrop");
 
 		if (Input.GetKeyDown ("2"))
-			SceneManager.LoadScene ("original");
+			SceneManager.LoadScene ("cannonshot");
 		
 	}
 }
