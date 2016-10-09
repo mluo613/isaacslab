@@ -11,19 +11,25 @@ public class Mechanics : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 	}
 
 
 	// Update is called once per frame
 	void Update () {
 
+        // when f key  is pressed
+        if (Input.GetKey("f"))
+        {
+            enableMotion = true;
+        }
 
 		if (enableMotion) {
+            // Need to get initial velocity from the settings of the balls on the table
+
 			// v = v0 + at
 			velocity.y += Time.deltaTime * Globals.timeScale * -9.8f;
 
-			if (this.transform.localPosition.y <= 0) {
+			if (this.transform.localPosition.y <= 0 && velocity.y <= 0) {
 				velocity.y = 0;
 				enableMotion = false;
 				AudioSource audioSource = GetComponentInChildren<AudioSource> ();
@@ -34,6 +40,7 @@ public class Mechanics : MonoBehaviour {
 			else {
 				this.transform.Translate (velocity * Time.deltaTime * Globals.timeScale);
 			}
+
 		}
 
 	}
