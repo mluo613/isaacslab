@@ -52,7 +52,7 @@ public class DrawArrows : MonoBehaviour
         arrowsVelocity[velArrowCount].transform.localRotation = Quaternion.Euler(0, 0, rotationAngleDegrees);
 
         arrowsVelocity[velArrowCount].transform.SetParent(this.transform);
-        arrowsVelocity[velArrowCount].transform.localPosition = new Vector3 (0, 0.5f, 0); 
+        arrowsVelocity[velArrowCount].transform.localPosition = new Vector3 (0, 0.25f, 0); 
 
         MeshRenderer[] meshArray = arrowsVelocity[velArrowCount].gameObject.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer mesh in meshArray)
