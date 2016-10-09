@@ -12,7 +12,7 @@ public class ComputedSolution : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!mechanicsScript.enableMotion) {
+		if (!mechanicsScript.enableMotion && Globals.uiMode == "Solution") {
 			Vector3 gravity = mechanicsScript.gravity;
 			float accelerationY = gravity.y;
 			float initialPosition = this.transform.localPosition.y;
@@ -26,18 +26,22 @@ public class ComputedSolution : MonoBehaviour {
 			equations += "(-2*y0) / a = t^2\n";
 			equations += "Sqrt(-2*y0/ a) = t\n";
 
-			string solutions = "y = " + initialPosition.ToString() + " + 0*t + (1/2)*(-9.8)*t^2\n";
-			solutions+= "0 - " + initialPosition.ToString()  + " = 0*t + (1/2)*(-9.8)*t^2\n";
-			solutions += "-" + initialPosition.ToString()  + " = (1/2)*(-9.8)*t^2\n";
-			solutions += "-2*" + initialPosition.ToString()  + " = (-9.8)*t^2\n";
-			solutions += "(-2*" + initialPosition.ToString()  + ") / (-9.8) = t^2\n";
-			solutions += "Sqrt(-2*" + initialPosition.ToString()  + "/ (-9.8)) = t\n";
+			string solutions = "y = y0 + v0*t + (1/2)*a*t^2\n";
+			solutions += "y = " + (Mathf.Round(initialPosition*1000)/1000).ToString () + " + 0*t + (1/2)*(-9.8)*t^2\n";
+			solutions += "0 - " + (Mathf.Round(initialPosition*1000)/1000).ToString()  + " = 0*t + (1/2)*(-9.8)*t^2\n";
+			solutions += "-" + (Mathf.Round(initialPosition*1000)/1000).ToString()  + " = (1/2)*(-9.8)*t^2\n";
+			solutions += "-2*" + (Mathf.Round(initialPosition*1000)/1000).ToString()  + " = (-9.8)*t^2\n";
+			solutions += " t^2 = (-2*" + (Mathf.Round(initialPosition*1000)/1000).ToString()  + ") / (-9.8)\n";
+			solutions += "t = Sqrt(-2*" + (Mathf.Round(initialPosition*1000)/1000).ToString()  + "/ (-9.8))\n";
+			solutions += "t = Sqrt(-2*" + (Mathf.Round(initialPosition*1000)/1000).ToString()  + "/ (-9.8))\n";
 
 			timeToGround = Mathf.Sqrt (Mathf.Abs (2 * (initialPosition) / accelerationY));
 			string answer = "Time To Ground = " + (Mathf.Round(timeToGround*1000)/1000).ToString () + " sec";
 
-			this.transform.parent.FindChild ("Equations").GetComponentInChildren<TextMesh> ().text = equations;
-			this.transform.parent.FindChild ("Solutions").GetComponentInChildren<TextMesh> ().text = solutions;
+			solutions += "Time To Ground = " + (Mathf.Round(timeToGround*100)/100).ToString () + " sec";
+
+			//this.transform.parent.FindChild ("Equations").GetComponentInChildren<TextMesh> ().text = equations;
+			GameObject.Find ("Solutions").GetComponentInChildren<TextMesh> ().text = solutions;
 			this.transform.parent.FindChild ("Answer").GetComponentInChildren<TextMesh> ().text = answer;
 		}
 	}

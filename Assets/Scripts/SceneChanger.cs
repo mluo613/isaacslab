@@ -12,11 +12,17 @@ public class SceneChanger : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (Input.GetKeyDown ("1"))
+		if (Input.GetKeyDown ("1")) {
+			Globals.uiMode = "None";
 			SceneManager.LoadScene ("balldrop");
-
-		if (Input.GetKeyDown ("2"))
-			SceneManager.LoadScene ("original");
-		
+		}
+		if (Input.GetKeyDown ("2")) {
+			Globals.uiMode = "None";
+			SceneManager.LoadScene ("NEWcannonshot");
+		}
+		if (Input.GetKeyDown ("3")) {
+			Globals.uiMode = "None";
+			SceneManager.LoadScene ("towerDrop");
+		}
 	}
 }

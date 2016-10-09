@@ -21,7 +21,7 @@ public class DrawArrows : MonoBehaviour
     public List<GameObject> arrowsAcc = new List<GameObject>();
 
     // Use this for initialization
-    void Start()
+	void Awake()
     {
         //GameObject bottomOfSphere = GameObject.Find("BottomOfSphere");
         mechanicsScript = GetComponent<Mechanics>();

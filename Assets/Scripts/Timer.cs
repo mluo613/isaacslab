@@ -4,12 +4,15 @@ using System.Collections;
 public class Timer : MonoBehaviour {
 
 	public float elapsedTime = 0f;
+	public float targetTime = 0.5f;
 	public bool timerOn = false;
 	// Use this for initialization
-
-	void Start () {
+	private Mechanics mechanicsScript;
+	void Awake()
+	{
+		//GameObject bottomOfSphere = GameObject.Find("BottomOfSphere");
+		mechanicsScript = GetComponent<Mechanics> ();
 	}
-	
 	// Update is called once per frame
 	void Update () {
 		/* if enabled motion is true 
@@ -24,23 +27,21 @@ public class Timer : MonoBehaviour {
 		 * if grabbedObject is not null and timeron is false
 		 *     set elaspedtime to zero 
 		 */
-		if (gameObject.GetComponent<Mechanics> ().enableMotion && !timerOn) {
+		if (mechanicsScript.enableMotion && !timerOn) {
 			timerOn = true;
 			elapsedTime = 0f;
-		} else if (gameObject.GetComponent<Mechanics> ().enableMotion && timerOn) {
+		} else if (mechanicsScript.enableMotion && timerOn) {
 			elapsedTime += Time.deltaTime * Globals.timeScale;
-			GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text = "Time: " + elapsedTime.ToString () + " seconds";
-		} else if (!gameObject.GetComponent<Mechanics> ().enableMotion && timerOn) {
+			GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text = "Time: " +  (Mathf.Round(elapsedTime*1000)/1000).ToString () + " seconds";
+		} else if (!mechanicsScript.enableMotion && timerOn) {
 			timerOn = false;
-			if (elapsedTime <= 1) {
-				GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text = "Time: " + elapsedTime.ToString () + " seconds";
-				GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text = "Excellent timing!";
-			} else if (elapsedTime <= 2) {
-				GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text = "Time: " + elapsedTime.ToString () + " seconds";
-				GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text = "There is a shorter way to achieve your result!";
-			} else if (elapsedTime > 2) {
-				GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text = "Time: " + elapsedTime.ToString () + " seconds";
-				GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text = "Try again with a different height";
+			GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text = "Time: " +  (Mathf.Round(elapsedTime*1000)/1000).ToString () + " seconds";
+			if (Mathf.Abs(elapsedTime -targetTime) <= .01f) {
+				GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text += "\nExcellent timing!";
+			} else if (Mathf.Abs(elapsedTime -targetTime) <= .03f) {
+				GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text += "\nThere is a shorter way to achieve your result!";
+			} else {
+				GameObject.Find ("Timerbox").GetComponentInChildren<TextMesh> ().text += "\nTry again with a different height!";
 			}
 		}
 	}
