@@ -6,9 +6,12 @@ public class Mechanics : MonoBehaviour {
 
 	public bool enableMotion = true;
 
+	public Vector3 gravity = new Vector3 (0, -9.8f, 0);
+	public Vector3 handForce = new Vector3 (0, 9.8f, 0);
+
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 
 
@@ -22,6 +25,9 @@ public class Mechanics : MonoBehaviour {
 
 			if (this.transform.localPosition.y <= 0) {
 				velocity.y = 0;
+				enableMotion = false;
+				AudioSource audioSource = GetComponentInChildren<AudioSource> ();
+				audioSource.Play();
 				this.transform.localPosition = 
 					new Vector3 (this.transform.localPosition.x, 0, this.transform.localPosition.z);
 			}
