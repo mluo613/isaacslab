@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: 2f9a08b85cf02b24d8db3195e0ad36ef
+timeCreated: 1475978588
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: environment__dome
+    100002: //RootNode
+    100004: scene_ball_drop__ball
+    100006: scene_ball_drop__path_ground_1
+    100008: scene_ball_drop__table_1
+    100010: scene_ball_drop__table_2
+    100012: scene_ball_drop__table_3
+    100014: scene_ball_drop__table_4
+    100016: scene_cannon_shooting__path_ground_2
+    100018: scene_cannon_shooting__platform_big
+    100020: scene_cannon_shooting__platform_cannon
+    100022: scene_cannon_shooting__projectile
+    100024: scene_cannon_shooting__table
+    100026: scene_cannon_shooting__target_1
+    100028: scene_cannon_shooting__target_2
+    100030: scene_cannon_shooting__target_3
+    400000: environment__dome
+    400002: //RootNode
+    400004: scene_ball_drop__ball
+    400006: scene_ball_drop__path_ground_1
+    400008: scene_ball_drop__table_1
+    400010: scene_ball_drop__table_2
+    400012: scene_ball_drop__table_3
+    400014: scene_ball_drop__table_4
+    400016: scene_cannon_shooting__path_ground_2
+    400018: scene_cannon_shooting__platform_big
+    400020: scene_cannon_shooting__platform_cannon
+    400022: scene_cannon_shooting__projectile
+    400024: scene_cannon_shooting__table
+    400026: scene_cannon_shooting__target_1
+    400028: scene_cannon_shooting__target_2
+    400030: scene_cannon_shooting__target_3
+    2300000: environment__dome
+    2300002: scene_ball_drop__ball
+    2300004: scene_ball_drop__path_ground_1
+    2300006: scene_ball_drop__table_1
+    2300008: scene_ball_drop__table_2
+    2300010: scene_ball_drop__table_3
+    2300012: scene_ball_drop__table_4
+    2300014: scene_cannon_shooting__path_ground_2
+    2300016: scene_cannon_shooting__platform_big
+    2300018: scene_cannon_shooting__platform_cannon
+    2300020: scene_cannon_shooting__projectile
+    2300022: scene_cannon_shooting__table
+    2300024: scene_cannon_shooting__target_1
+    2300026: scene_cannon_shooting__target_2
+    2300028: scene_cannon_shooting__target_3
+    3300000: environment__dome
+    3300002: scene_ball_drop__ball
+    3300004: scene_ball_drop__path_ground_1
+    3300006: scene_ball_drop__table_1
+    3300008: scene_ball_drop__table_2
+    3300010: scene_ball_drop__table_3
+    3300012: scene_ball_drop__table_4
+    3300014: scene_cannon_shooting__path_ground_2
+    3300016: scene_cannon_shooting__platform_big
+    3300018: scene_cannon_shooting__platform_cannon
+    3300020: scene_cannon_shooting__projectile
+    3300022: scene_cannon_shooting__table
+    3300024: scene_cannon_shooting__target_1
+    3300026: scene_cannon_shooting__target_2
+    3300028: scene_cannon_shooting__target_3
+    4300000: environment__dome
+    4300002: scene_ball_drop__ball
+    4300004: scene_ball_drop__path_ground_1
+    4300006: scene_ball_drop__table_1
+    4300008: scene_ball_drop__table_2
+    4300010: scene_ball_drop__table_3
+    4300012: scene_ball_drop__table_4
+    4300014: scene_cannon_shooting__path_ground_2
+    4300016: scene_cannon_shooting__platform_big
+    4300018: scene_cannon_shooting__platform_cannon
+    4300020: scene_cannon_shooting__projectile
+    4300022: scene_cannon_shooting__table
+    4300024: scene_cannon_shooting__target_1
+    4300026: scene_cannon_shooting__target_2
+    4300028: scene_cannon_shooting__target_3
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
