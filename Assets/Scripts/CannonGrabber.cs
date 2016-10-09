@@ -54,6 +54,8 @@ public class CannonGrabber : MonoBehaviour
 	void Update()
 	{
 		var device = SteamVR_Controller.Input((int)trackedObj.index);
+		if (projectile.GetComponent<Mechanics> ().enableMotion == false)
+			projectile.GetComponent<Mechanics> ().velocity = new Vector3 (xPower.transform.localPosition.y * 50, yPower.transform.localPosition.y * 50, 0);
 
 		if (device.GetPressDown (SteamVR_Controller.ButtonMask.Axis0))
 		{
