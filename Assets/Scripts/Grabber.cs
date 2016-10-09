@@ -46,6 +46,27 @@ public class Grabber : MonoBehaviour
 				Globals.timeScale = Mathf.Max (Mathf.Min (Globals.timeScale, 2), 0);
 			}
 		}
+		if (device.GetPressDown (SteamVR_Controller.ButtonMask.Grip))
+		{
+			if (Globals.uiMode == "None") {
+				Globals.uiMode = "Overlay";
+				foreach (GameObject overlay in Globals.overlays) {
+					overlay.SetActive (true);
+				}
+			}
+			else if (Globals.uiMode == "Overlay") {
+				Globals.uiMode = "Velocity";
+			}
+			else if (Globals.uiMode == "Velocity") {
+				Globals.uiMode = "Acceleration";
+			}
+			else if (Globals.uiMode == "Acceleration") {
+				Globals.uiMode = "None";
+				foreach (GameObject overlay in Globals.overlays) {
+					overlay.SetActive (false);
+				}
+			}
+		}
 
 		if (grabbedObject != null && device.GetTouch (SteamVR_Controller.ButtonMask.Trigger)) {
 			
