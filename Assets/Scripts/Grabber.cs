@@ -29,8 +29,11 @@ public class Grabber : MonoBehaviour
 				originalObjectHeight = grabbedObject.localPosition.y;
 				originalGrabberHeight = this.transform.parent.parent.position.y;
 
-				grabbedObject.GetComponent<Mechanics> ().enableMotion = false;
-				grabbedObject.GetComponent<Mechanics> ().velocity.y = 0;
+
+				if (grabbedObject.GetComponent<Mechanics> () != null) {
+					grabbedObject.GetComponent<Mechanics> ().enableMotion = false;
+					grabbedObject.GetComponent<Mechanics> ().velocity.y = 0;
+				}
 			}
 		}
 	}
@@ -61,7 +64,16 @@ public class Grabber : MonoBehaviour
 				Globals.uiMode = "Acceleration";
 			}
 			else if (Globals.uiMode == "Acceleration") {
+				Globals.uiMode = "Solution";
+				foreach (GameObject overlay in Globals.solutions) {
+					overlay.SetActive (true);
+				}
+			}
+			else if (Globals.uiMode == "Solution") {
 				Globals.uiMode = "None";
+				foreach (GameObject overlay in Globals.solutions) {
+					overlay.SetActive (false);
+				}
 				foreach (GameObject overlay in Globals.overlays) {
 					overlay.SetActive (false);
 				}
@@ -80,7 +92,9 @@ public class Grabber : MonoBehaviour
 			originalObjectHeight = 0;
 			originalGrabberHeight = 0;
 
-			grabbedObject.GetComponent<Mechanics> ().enableMotion = true;
+			if(grabbedObject.GetComponent<Mechanics> () != null)
+				grabbedObject.GetComponent<Mechanics> ().enableMotion = true;
+	
 			grabbedObject = null;
 		}
 	}
