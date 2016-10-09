@@ -19,10 +19,13 @@ public class ScatterPlotPosition : MonoBehaviour {
 
     private Vector3 initialVelocity;
 
+
+	void Start(){
+		mechanicsScript = GetComponent<Mechanics>();
+	}
     // Use this for initialization
     public void Drop () {
 
-        mechanicsScript = GetComponent<Mechanics>();
 
         initialVelocity = mechanicsScript.velocity;
 
