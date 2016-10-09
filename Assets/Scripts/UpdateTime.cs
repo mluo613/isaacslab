@@ -10,11 +10,6 @@ public class UpdateTime : MonoBehaviour {
 			overlay.SetActive (false);
 		}
 
-		Globals.solutions = new List<GameObject>();
-		foreach (GameObject overlay in GameObject.FindGameObjectsWithTag("Solution")) {
-			Globals.solutions.Add (overlay);
-			overlay.SetActive (false);
-		}
 	}
 	// Update is called once per frame
 	void Update () {

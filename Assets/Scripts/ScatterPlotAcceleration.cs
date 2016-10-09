@@ -19,7 +19,7 @@ public class ScatterPlotAcceleration : MonoBehaviour {
     private Vector3 initialVelocity;
 
     // Use this for initialization
-    void Start () {
+	public void Drop () {
 
         mechanicsScript = GetComponent<Mechanics>();
 
@@ -42,6 +42,7 @@ public class ScatterPlotAcceleration : MonoBehaviour {
         point.transform.SetParent(tablet.transform);
         point.transform.localPosition = new Vector3(timeInterval * numberPointsCollected * timeAxisFactor, 
                                                     pointPosition*positionAxisFactor, 0);
+		point.transform.localScale = new Vector3 (.5f, .5f, .5f);
         point.GetComponent<MeshRenderer>().material.color = color;
 
     }
