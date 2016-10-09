@@ -7,7 +7,7 @@ public class Grabber : MonoBehaviour
 	public SteamVR_TrackedObject trackedObj;
 	FixedJoint joint;
 
-	Transform grabbedObject;
+	public Transform grabbedObject;
 
 	float originalObjectHeight;
 	float originalGrabberHeight;
