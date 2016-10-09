@@ -24,14 +24,14 @@ public class ComputedCannon : MonoBehaviour {
 			string solutions = "y = y0 + v0*t + (1/2)*a*t^2\n";
 			solutions += "0 = 0 + " + (Mathf.Round(velocity.y*1000)/1000).ToString()  + "*t + (1/2)*(-9.8)*t^2\n";
 			solutions += "(4.9)*t = " + (Mathf.Round(velocity.y*1000)/1000).ToString()  + "\n";
-			solutions += "t = " + (Mathf.Round(velocity.y / 4.9 *1000)/1000).ToString()  + "\n";
-			float t = velocity.y / 4.9;
+			solutions += "t = " + (Mathf.Round(velocity.y / 4.9f *1000)/1000).ToString()  + "\n";
+			float t = velocity.y / 4.9f;
 
 			solutions += "x = x0 + v0*t + (1/2)*a*t^2\n";
 
 			solutions += "50 = 0 + x*t + 0*t^2\n";
 			solutions += "" + (Mathf.Round(t*1000)/1000).ToString()  + "*x = 50\n";
-			solutions +=  "x = " + (Mathf.Round(50/t*1000)/1000).ToString() + "\n";
+			solutions +=  "x = " + (Mathf.Round(50f/t*1000)/1000).ToString() + "\n";
 /*			solutions += "y = " + (Mathf.Round(initialPosition*1000)/1000).ToString () + " + 0*t + (1/2)*(-9.8)*t^2\n";
 			solutions += "0 - " + (Mathf.Round(initialPosition*1000)/1000).ToString()  + " = 0*t + (1/2)*(-9.8)*t^2\n";
 			solutions += "-" + (Mathf.Round(initialPosition*1000)/1000).ToString()  + " = (1/2)*(-9.8)*t^2\n";
