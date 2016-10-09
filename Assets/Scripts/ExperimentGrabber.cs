@@ -65,17 +65,8 @@ public class ExperimentGrabber : MonoBehaviour
 				Globals.uiMode = "Acceleration";
 			}
 			else if (Globals.uiMode == "Acceleration") {
-				Globals.uiMode = "Solution";
-				foreach (GameObject overlay in Globals.solutions) {
-					overlay.SetActive (true);
-				}
-			}
-			else if (Globals.uiMode == "Solution") {
 				Globals.uiMode = "None";
 				foreach (GameObject overlay in Globals.solutions) {
-					overlay.SetActive (false);
-				}
-				foreach (GameObject overlay in Globals.overlays) {
 					overlay.SetActive (false);
 				}
 			}
