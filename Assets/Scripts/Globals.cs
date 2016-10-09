@@ -9,6 +9,7 @@ public class Globals {
 	public static List<GameObject> overlays = new List<GameObject> ();
 }
 /*
+ * large building vs a truck
  * control box for cannon
  * cannon manipulation
  * firing the cannon
