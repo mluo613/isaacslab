@@ -7,6 +7,7 @@ public class Globals {
 	public static float timeScale = 1.0f;
 	public static string uiMode = "None";
 	public static List<GameObject> overlays = new List<GameObject> ();
+	public static List<GameObject> solutions = new List<GameObject> ();
 }
 /*
  * large building vs a truck
