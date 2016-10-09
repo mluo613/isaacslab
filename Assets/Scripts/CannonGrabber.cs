@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CannonGrabber : MonoBehaviour
 {
@@ -53,6 +54,8 @@ public class CannonGrabber : MonoBehaviour
 	void Update()
 	{
 		var device = SteamVR_Controller.Input((int)trackedObj.index);
+		if (projectile.GetComponent<Mechanics> ().enableMotion == false)
+			projectile.GetComponent<Mechanics> ().velocity = new Vector3 (xPower.transform.localPosition.y * 50, yPower.transform.localPosition.y * 50, 0);
 
 		if (device.GetPressDown (SteamVR_Controller.ButtonMask.Axis0))
 		{
@@ -86,7 +89,10 @@ public class CannonGrabber : MonoBehaviour
 				foreach (GameObject overlay in Globals.solutions) {
 					overlay.SetActive (false);
 				}
-				foreach (GameObject overlay in Globals.overlays) {
+
+				Globals.solutions = new List<GameObject>();
+				foreach (GameObject overlay in GameObject.FindGameObjectsWithTag("Solution")) {
+					Globals.solutions.Add (overlay);
 					overlay.SetActive (false);
 				}
 			}

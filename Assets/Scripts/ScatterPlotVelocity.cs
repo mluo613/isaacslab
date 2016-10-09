@@ -9,7 +9,7 @@ public class ScatterPlotVelocity : MonoBehaviour {
 
     private Mechanics mechanicsScript;
 
-    public float timeAxisFactor = 8f;
+	public float timeAxisFactor = 2f;
     public float positionAxisFactor;
     public bool timerStarted = true;
     public float timeInterval;
@@ -26,11 +26,11 @@ public class ScatterPlotVelocity : MonoBehaviour {
         initialVelocity = mechanicsScript.velocity;
 
         numberPointsCollected = 1; // need to initalize in start as global didn't initalize it...
-        timeInterval = 0.1f;
+        timeInterval = 0.5f;
         timeElapsed = 0;
         positionPoints.Add(0, new Vector3(0, this.transform.localPosition.y, 0));
 
-        positionAxisFactor = 20/this.transform.localPosition.y;
+        positionAxisFactor = 20/120f;
         velocityPoints.Add(0, Vector3.zero);
     }
 
@@ -49,7 +49,7 @@ public class ScatterPlotVelocity : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (timerStarted)
+		if (timerStarted && mechanicsScript.enableMotion)
         {
             // don't plot anymore past the max time
             if (timeAxisFactor * timeInterval * numberPointsCollected > 20)
