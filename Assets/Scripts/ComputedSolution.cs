@@ -38,7 +38,7 @@ public class ComputedSolution : MonoBehaviour {
 			timeToGround = Mathf.Sqrt (Mathf.Abs (2 * (initialPosition) / accelerationY));
 			string answer = "Time To Ground = " + (Mathf.Round(timeToGround*1000)/1000).ToString () + " sec";
 
-			solutions += "Time To Ground = " + (Mathf.Round(timeToGround*1000)/1000).ToString () + " sec";
+			solutions += "Time To Ground = " + (Mathf.Round(timeToGround*100)/100).ToString () + " sec";
 
 			//this.transform.parent.FindChild ("Equations").GetComponentInChildren<TextMesh> ().text = equations;
 			GameObject.Find ("Solutions").GetComponentInChildren<TextMesh> ().text = solutions;

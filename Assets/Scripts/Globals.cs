@@ -9,6 +9,15 @@ public class Globals {
 	public static List<GameObject> overlays = new List<GameObject> ();
 	public static List<GameObject> solutions = new List<GameObject> ();
 }
+/* fix the scene transitions 
+ * fix overlay hiding CHECK
+ * enable overlays on the tower drop
+ * add the cannon
+ * add explosions
+ * 
+*/
+
+
 /*
  * large building vs a truck
  * control box for cannon
