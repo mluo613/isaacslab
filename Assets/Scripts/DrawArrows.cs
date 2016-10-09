@@ -32,7 +32,7 @@ public class DrawArrows : MonoBehaviour
         arrow.transform.Rotate(new Vector3(0, 0, rotationAngleDegrees));
 
         arrow.transform.SetParent(this.transform);
-		arrow.transform.localPosition = new Vector3 (0, 0.5f, 0); 
+		arrow.transform.localPosition = new Vector3 (0, 0.25f, 0); 
 
         MeshRenderer[] meshArray = arrow.gameObject.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer mesh in meshArray)

@@ -42,7 +42,7 @@ public class Grabber : MonoBehaviour
 		if (device.GetPressDown (SteamVR_Controller.ButtonMask.Axis0))
 		{
 			if (Mathf.Abs (device.GetAxis ().x) >= 0.5f) {
-				Globals.timeScale += 0.25f * Mathf.Sign (device.GetAxis ().x);
+				Globals.timeScale += 0.1f * Mathf.Sign (device.GetAxis ().x);
 				Globals.timeScale = Mathf.Max (Mathf.Min (Globals.timeScale, 2), 0);
 			}
 		}
