@@ -72,7 +72,7 @@ public class Grabber : MonoBehaviour
 			}
 			else if (Globals.uiMode == "Solution") {
 				Globals.uiMode = "None";
-				foreach (GameObject overlay in Globals.solutions) {
+				foreach (GameObject overlay in Globals.overlays) {
 					overlay.SetActive (false);
 				}
 

@@ -31,7 +31,7 @@ public class ComputedCannon : MonoBehaviour {
 
 			solutions += "50 = 0 + x*t + 0*t^2\n";
 			solutions += "" + (Mathf.Round(t*1000)/1000).ToString()  + "*v0 = 50\n";
-			solutions +=  "v0 = " + (Mathf.Round(50f/t*1000)/1000).ToString() + "\n";
+			solutions +=  "v0 = " + (Mathf.Round(50f/t*100)/100).ToString() + "\n";
 /*			solutions += "y = " + (Mathf.Round(initialPosition*1000)/1000).ToString () + " + 0*t + (1/2)*(-9.8)*t^2\n";
 			solutions += "0 - " + (Mathf.Round(initialPosition*1000)/1000).ToString()  + " = 0*t + (1/2)*(-9.8)*t^2\n";
 			solutions += "-" + (Mathf.Round(initialPosition*1000)/1000).ToString()  + " = (1/2)*(-9.8)*t^2\n";
