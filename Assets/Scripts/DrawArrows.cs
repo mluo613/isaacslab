@@ -46,7 +46,6 @@ public class DrawArrows : MonoBehaviour
 
     void updateSingleArrowVel(Vector3 vector, UnityEngine.Color color)
     {
-        //arrow.gameObject.transform.position = new Vector3(xTest, 0, 0); // todo replace with object position
         float velocityMag = Mathf.Sqrt(Mathf.Pow(vector.x, 2) + Mathf.Pow(vector.y, 2));
         float rotationAngleDegrees = Mathf.Atan2(vector.y, vector.x) * 180 / Mathf.PI;
         arrowsVelocity[velArrowCount].transform.localRotation = Quaternion.Euler(0, 0, rotationAngleDegrees);
@@ -156,12 +155,19 @@ public class DrawArrows : MonoBehaviour
         {
             arrowsAcc[ii].gameObject.transform.localScale = new Vector3(0, 0, 0);
         }
-
+		/*
+        for (int ii = 0; ii < 2; ++ii)
+        {
+            Debug.Log(arrowsAcc[ii].gameObject.transform.localScale);
+        }
+        */
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
+        Debug.Log(mechanicsScript.velocity);
 
         if (Input.GetKeyDown("v"))
         {
@@ -195,9 +201,9 @@ public class DrawArrows : MonoBehaviour
                 areAccelerationArrowsVisible = true;
             }
         }
+		*/
 
-
-        if (areVelocityArrowsVisible)
+		if (Globals.uiMode == "Velocity")
         {
             List<Vector3> velocities = new List<Vector3>();
             velocities.Add(mechanicsScript.velocity);
@@ -212,7 +218,7 @@ public class DrawArrows : MonoBehaviour
             }
         }
 
-        if (areAccelerationArrowsVisible)
+		if (Globals.uiMode == "Acceleration")
         {
             List<Vector3> accelerations = new List<Vector3>();
             accelerations.Add(mechanicsScript.gravity);

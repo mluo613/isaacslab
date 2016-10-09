@@ -16,7 +16,7 @@ public class TextOverlay : MonoBehaviour {
 			GetComponentInChildren<TextMesh> ().text = "Y Velocity:" + (Mathf.Round (this.transform.parent.GetComponent<Mechanics> ().velocity.y * 10) / 10f).ToString ();
 		}
 		else if (this.name == "HeightOverlay") {
-			GetComponentInChildren<TextMesh> ().text = "Height:" + (Mathf.Round (this.transform.parent.localPosition.y * 10) / 10f).ToString ();
+			GetComponentInChildren<TextMesh> ().text = "Height:" + (Mathf.Round (this.transform.parent.parent.localPosition.y * 10) / 10f).ToString ();
 		}
 	}
 }
