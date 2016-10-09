@@ -17,6 +17,9 @@ public class SceneChanger : MonoBehaviour {
 
 		if (Input.GetKeyDown ("2"))
 			SceneManager.LoadScene ("NEWcannonshot");
+
+		if (Input.GetKeyDown ("3"))
+			SceneManager.LoadScene ("towerDrop");
 		
 	}
 }

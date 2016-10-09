@@ -7,7 +7,7 @@ public class ExperimentGrabber : MonoBehaviour
 	public SteamVR_TrackedObject trackedObj;
 	FixedJoint joint;
 
-	Transform grabbedObject;
+	GameObject grabbedObject;
 
 	float originalObjectHeight;
 	float originalGrabberHeight;
@@ -24,11 +24,17 @@ public class ExperimentGrabber : MonoBehaviour
 		if (other.attachedRigidbody) {
 			if (grabbedObject == null && device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) {
 
-				grabbedObject = other.transform;
+				grabbedObject = GameObject.Find(other.name + "Drop");
 
-				originalObjectHeight = grabbedObject.localPosition.y;
-				originalGrabberHeight = this.transform.parent.parent.position.y;
+				grabbedObject.GetComponent<Mechanics> ().enableMotion = true;
 
+				grabbedObject.GetComponent<ScatterPlotPosition> ().Drop();
+				grabbedObject.GetComponent<ScatterPlotVelocity> ().Drop();
+				grabbedObject.GetComponent<ScatterPlotAcceleration> ().Drop();
+
+				grabbedObject.GetComponent<ScatterPlotPosition> ().timerStarted = true;
+				grabbedObject.GetComponent<ScatterPlotVelocity> ().timerStarted = true;
+				grabbedObject.GetComponent<ScatterPlotAcceleration> ().timerStarted = true;
 			}
 		}
 	}
@@ -74,7 +80,7 @@ public class ExperimentGrabber : MonoBehaviour
 				}
 			}
 		}
-
+		/*
 		if (grabbedObject != null && device.GetTouch (SteamVR_Controller.ButtonMask.Trigger)) {
 			float newAngle = 0f;
 			if (this.transform.parent.parent.position.y <= originalGrabberHeight)
@@ -85,22 +91,10 @@ public class ExperimentGrabber : MonoBehaviour
 				0,0,0
 				);
 
-		}
-		else if (grabbedObject != null && device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
+		}*/
+		if (grabbedObject != null && device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
 		{
-			originalObjectHeight = 0;
-			originalGrabberHeight = 0;
 
-
-			/*
-			grabbedObject.GetComponent<ScatterPlotPosition> ().Drop();
-			grabbedObject.GetComponent<ScatterPlotVelocity> ().Drop();
-			grabbedObject.GetComponent<ScatterPlotAcceleration> ().Drop();
-
-			grabbedObject.GetComponent<ScatterPlotPosition> ().timerStarted = true;
-			grabbedObject.GetComponent<ScatterPlotVelocity> ().timerStarted = true;
-			grabbedObject.GetComponent<ScatterPlotAcceleration> ().timerStarted = true;
-*/
 			grabbedObject = null;
 		}
 	}
