@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
-public class Grabber : MonoBehaviour
+public class ExperimentGrabber : MonoBehaviour
 {
 
 	public SteamVR_TrackedObject trackedObj;
@@ -24,7 +23,7 @@ public class Grabber : MonoBehaviour
 
 		if (other.attachedRigidbody) {
 			if (grabbedObject == null && device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) {
-				
+
 				grabbedObject = other.transform.parent;
 
 				originalObjectHeight = grabbedObject.localPosition.y;
@@ -75,21 +74,18 @@ public class Grabber : MonoBehaviour
 				foreach (GameObject overlay in Globals.solutions) {
 					overlay.SetActive (false);
 				}
-
-				Globals.solutions = new List<GameObject>();
-				foreach (GameObject overlay in GameObject.FindGameObjectsWithTag("Solution")) {
-					Globals.solutions.Add (overlay);
+				foreach (GameObject overlay in Globals.overlays) {
 					overlay.SetActive (false);
 				}
 			}
 		}
 
 		if (grabbedObject != null && device.GetTouch (SteamVR_Controller.ButtonMask.Trigger)) {
-			
+
 			grabbedObject.localPosition = new Vector3 (grabbedObject.localPosition.x, 
 				Mathf.Max(0, this.transform.parent.parent.position.y - (originalGrabberHeight - originalObjectHeight)), 
 				grabbedObject.localPosition.z);
-			
+
 		}
 		else if (grabbedObject != null && device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
 		{
@@ -98,7 +94,16 @@ public class Grabber : MonoBehaviour
 
 			if(grabbedObject.GetComponent<Mechanics> () != null)
 				grabbedObject.GetComponent<Mechanics> ().enableMotion = true;
-	
+
+
+
+			grabbedObject.GetComponent<ScatterPlotPosition> ().Drop();
+			grabbedObject.GetComponent<ScatterPlotVelocity> ().Drop();
+			grabbedObject.GetComponent<ScatterPlotAcceleration> ().Drop();
+
+			grabbedObject.GetComponent<ScatterPlotPosition> ().timerStarted = true;
+			grabbedObject.GetComponent<ScatterPlotVelocity> ().timerStarted = true;
+			grabbedObject.GetComponent<ScatterPlotAcceleration> ().timerStarted = true;
 
 			grabbedObject = null;
 		}
