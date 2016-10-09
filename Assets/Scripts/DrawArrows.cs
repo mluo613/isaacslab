@@ -8,8 +8,8 @@ public class DrawArrows : MonoBehaviour
 
     private float xTest = 0.0f;
     private float yTest = 0.0f;
+	public float arrowScale	 = 0.1f;
 
-    public GameObject Ball;
     private Mechanics mechanicsScript;
 
     private bool areVelocityArrowsVisible = false;
@@ -19,8 +19,8 @@ public class DrawArrows : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        GameObject bottomOfSphere = GameObject.Find("BottomOfSphere");
-        mechanicsScript = bottomOfSphere.GetComponent<Mechanics>();
+        //GameObject bottomOfSphere = GameObject.Find("BottomOfSphere");
+        mechanicsScript = GetComponent<Mechanics>();
     }
 
     void drawSingleArrow(Vector3 vector, UnityEngine.Color color)
@@ -31,8 +31,8 @@ public class DrawArrows : MonoBehaviour
         float rotationAngleDegrees = Mathf.Atan2(vector.y, vector.x) * 180 / Mathf.PI;
         arrow.transform.Rotate(new Vector3(0, 0, rotationAngleDegrees));
 
-        arrow.transform.SetParent(Ball.transform);
-        arrow.transform.localPosition = Vector3.zero;
+        arrow.transform.SetParent(this.transform);
+		arrow.transform.localPosition = new Vector3 (0, 0.5f, 0); 
 
         MeshRenderer[] meshArray = arrow.gameObject.GetComponentsInChildren<MeshRenderer>();
         foreach (MeshRenderer mesh in meshArray)
@@ -40,7 +40,7 @@ public class DrawArrows : MonoBehaviour
             mesh.material.color = color;
         }
 
-        arrow.gameObject.transform.localScale = new Vector3(velocityMag * .2f, 1 * .2f, 1 * .2f);
+		arrow.gameObject.transform.localScale = new Vector3(velocityMag * arrowScale, arrowScale, arrowScale);
         arrows.Add(arrow);
     }
 
@@ -133,7 +133,9 @@ public class DrawArrows : MonoBehaviour
         {
             List<Vector3> accelerations = new List<Vector3>();
             accelerations.Add(mechanicsScript.gravity);
-            accelerations.Add(mechanicsScript.handForce);
+			if (mechanicsScript.enableMotion == false)
+	            accelerations.Add(mechanicsScript.handForce);
+			
             toggleArrows(accelerations, new UnityEngine.Color(250, 0, 0));
         }
 
