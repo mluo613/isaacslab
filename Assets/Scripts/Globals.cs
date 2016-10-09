@@ -22,3 +22,26 @@ public class Globals {
  * 
  * 
  * */
+
+/* 
+	timer for balldrop
+	compare against a target time
+	victory conditions
+	import fireworks!!
+
+	overhaul the equations/solutions UI to be prettier!!
+	improve height gauge
+
+	redo the overlay modes
+
+	switch scenes
+
+	setting velocity and enable fire on fire button!
+
+	get a skyscraper and a truck or something equivalent
+
+	explosion sounds and victory noises
+
+
+
+*/
