@@ -11,7 +11,7 @@ public class StretchCylinderY : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // TODO remove this transformation!
-        this.transform.Translate(new Vector3(0, .005f, 0));
+        //this.transform.Translate(new Vector3(0, .005f, 0));
 
         Vector3 position = this.transform.localPosition;
 
