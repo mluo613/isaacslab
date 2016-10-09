@@ -10,7 +10,7 @@ public class ScatterPlotPosition : MonoBehaviour {
 
     private Mechanics mechanicsScript;
 
-    public float timeAxisFactor = 8f;
+    public float timeAxisFactor = 2f;
     public float positionAxisFactor;
     public bool timerStarted = true;
     public float timeInterval;
@@ -27,12 +27,13 @@ public class ScatterPlotPosition : MonoBehaviour {
         initialVelocity = mechanicsScript.velocity;
 
         numberPointsCollected = 1; // need to initalize in start as global didn't initalize it...
-        timeInterval = 0.1f;
+        timeInterval = .5f;
         timeElapsed = 0;
 
         positionPoints.Add(0, new Vector3(0,this.transform.localPosition.y, 0));
-        positionAxisFactor = 20/this.transform.localPosition.y;
-        plotPoint(positionPoints[0].y, new UnityEngine.Color(0, 0, 250));
+        //positionAxisFactor = 20/this.transform.localPosition.y;
+		positionAxisFactor = 20/420f;
+		plotPoint(positionPoints[0].y, new UnityEngine.Color(0, 0, 250));
         velocityPoints.Add(0, Vector3.zero);
         accelerationPoints.Add(0, Vector3.zero);
     }
@@ -52,7 +53,7 @@ public class ScatterPlotPosition : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (timerStarted)
+		if (timerStarted && mechanicsScript.enableMotion)
         {
             // don't plot anymore past the max time
             if (timeAxisFactor * timeInterval * numberPointsCollected > 20)
