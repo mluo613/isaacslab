@@ -28,7 +28,7 @@ public class Mechanics : MonoBehaviour {
 			if (this.transform.localPosition.y <= 0 && velocity.y <= 0) {
 				velocity = Vector3.zero;
 				enableMotion = false;
-				if (GetComponentInChildren<AudioSource> () != null) {
+				if (GetComponentInChildren<AudioSource> () != null && name != "Projectile") {
 					AudioSource audioSource = GetComponentInChildren<AudioSource> ();
 					audioSource.Play ();
 				}
