@@ -70,7 +70,6 @@ public class DrawArrows : MonoBehaviour
         for (int ii = 0; ii < vectors.Count; ++ii)
         {
             Vector3 vector = vectors[ii];
-            Debug.Log(vector);
             // draw x and y arrows
             if (vector.x != 0)
             {
@@ -95,7 +94,6 @@ public class DrawArrows : MonoBehaviour
 
         }
 
-        Debug.Log(arrowsVelocity.Count);
         // There is a max of 3 vel vectors
         for (int ii=velArrowCount; ii<3; ++ii)
         {
@@ -108,7 +106,6 @@ public class DrawArrows : MonoBehaviour
     {
         float velocityMag = Mathf.Sqrt(Mathf.Pow(vector.x, 2) + Mathf.Pow(vector.y, 2));
         float rotationAngleDegrees = Mathf.Atan2(vector.y, vector.x) * 180 / Mathf.PI;
-        Debug.Log(rotationAngleDegrees);
         arrowsAcc[accArrowCount].transform.localRotation = Quaternion.Euler(0, 0, rotationAngleDegrees);
 
         arrowsAcc[accArrowCount].transform.SetParent(this.transform);
@@ -130,7 +127,6 @@ public class DrawArrows : MonoBehaviour
         for (int ii = 0; ii < vectors.Count; ++ii)
         {
             Vector3 vector = vectors[ii];
-            Debug.Log(vector);
             // draw x and y arrows
             if (vector.x != 0)
             {
@@ -161,16 +157,11 @@ public class DrawArrows : MonoBehaviour
             arrowsAcc[ii].gameObject.transform.localScale = new Vector3(0, 0, 0);
         }
 
-        for (int ii = 0; ii < 2; ++ii)
-        {
-            Debug.Log(arrowsAcc[ii].gameObject.transform.localScale);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(mechanicsScript.velocity);
 
         if (Input.GetKeyDown("v"))
         {
@@ -227,7 +218,6 @@ public class DrawArrows : MonoBehaviour
             accelerations.Add(mechanicsScript.gravity);
 			if (mechanicsScript.enableMotion == false)
 	            accelerations.Add(mechanicsScript.handForce);
-            Debug.Log(accelerations.Count);
             updateArrowsAcc(accelerations, new UnityEngine.Color(250, 0, 0));
         }
         else
